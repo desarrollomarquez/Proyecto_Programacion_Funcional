@@ -164,19 +164,48 @@ public class TestPF {
 	        		  .map(Map.Entry::getKey)
 	        		  .collect(Collectors.toList());
 	        
-	      // isbnCodes.forEach(System.out::println);
+	        //isbnCodes.forEach(System.out::println);
 	        
 	        ServicioPersonas sp= new ServicioPersonas();
-	        Optional<Persona> op=sp.buscar("angel");
+	        Optional<Persona> op=sp.buscar("medea");
 	        if (op.isPresent()) {
-	        System.out.println("\n"+op.get().getNombre());
+	       // System.out.println("\n"+op.get().getNombre());
 	        }else { 
-	        System.out.println("\n"+"no hay registros");
+	       // System.out.println("\n"+"no hay registros");
 	        }
 	       
-	  
-	
+	        List<String> titles = books.entrySet().stream()
+	        		.filter(e -> e.getKey().startsWith("978-0"))
+	        		.map(Map.Entry::getValue)
+	        		.collect(Collectors.toList());
 	        
+	       // titles.forEach(System.out::println);
+	        titles.forEach((p) -> {
+	        	System.out.print("\n");
+	        	System.out.print(p);
+	        });
+	  
+	        
+	        Set<Cliente> hashCliente = new HashSet<Cliente>();
+		       
+		    ArrayList<Cliente> arraycls = new ArrayList<Cliente>();
+		    Cliente cl1 = new Cliente("Jorge Rios", "12343","Calle 10","314543");
+		    Cliente cl2 = new Cliente("Allan Poo", "65646","Calle 11","314543");
+		    arraycls.add(cl1);
+		    arraycls.add(cl2);
+		    
+		    //System.out.print("\n"+arraycls);
+		    System.out.print("\n"+"#######Recorridos con Stream#######");
+		    for (Cliente cl: arraycls) {
+		    	System.out.print("\n");   
+		    	System.out.print(cl.nid + " - "+ cl.fullname);
+		    }
+		    
+		    arraycls.stream().forEach((p) -> {
+		    	System.out.print("\n");   
+		    	System.out.print(p.getFullname()+ " "+p.getNid()+" "+p.getTelefono());
+		    	   
+		    	   });
 	
 	}
 	
