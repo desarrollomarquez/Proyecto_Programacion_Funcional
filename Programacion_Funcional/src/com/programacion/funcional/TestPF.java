@@ -1,9 +1,11 @@
 package com.programacion.funcional;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
+import java.time.Period;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
@@ -230,8 +232,10 @@ public class TestPF {
 		      System.out.print("\n"+"####### ZonedDateTime Java 8#######");
 		     // testZonedDateTime();
 		      System.out.print("\n"+"####### CronoUnit Java 8#######");
-		      testChromoUnits();
-	
+		     // testChromoUnits();
+		      System.out.print("\n"+"####### Period - Duration Java 8#######");
+		      testPeriod();
+		      testDuration();
 	}
 	
 public static  int duplicar( int numero) {
@@ -326,8 +330,29 @@ public static void testChromoUnits() {
     System.out.println("Date after ten year: " + nextDecade);
  }
 	
+public static void testPeriod() {
+    //Get the current date
+    LocalDate date1 = LocalDate.now();
+    System.out.println("\n"+"Current date: " + date1);
+		
+    //add 1 month to the current date
+    LocalDate date2 = date1.plus(1, ChronoUnit.MONTHS);
+    System.out.println("Next month: " + date2);
+    
+    Period period = Period.between(date2, date1);
+    System.out.println("Period: " + period);
+ }
 	
-	
+ public static void testDuration() {
+    LocalTime time1 = LocalTime.now();
+    Duration twoHours = Duration.ofHours(2);
+		
+    LocalTime time2 = time1.plus(twoHours);
+    System.out.println(time2);
+    Duration duration = Duration.between(time1, time2);
+		
+    System.out.println("Duration: " + duration);
+ }
 	
 	
 
