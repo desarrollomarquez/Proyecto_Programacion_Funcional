@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -224,6 +226,8 @@ public class TestPF {
 		      //System.out.println(sum(c,d));
 		      System.out.print("\n"+"####### LocalDateTime Java 8#######");
 		     // testLocalDateTime();
+		      System.out.print("\n"+"####### ZonedDateTime Java 8#######");
+		      testZonedDateTime();
 	
 	}
 	
@@ -285,7 +289,17 @@ public static void testLocalDateTime() {
     System.out.println("date5: " + date5);
  }
 	
-	
+public static void testZonedDateTime() {
+    // Get the current date and time
+    ZonedDateTime date1 = ZonedDateTime.parse("2007-12-03T10:15:30+05:30[Asia/Karachi]");
+    System.out.println("\n"+"date1: " + date1);
+		
+    ZoneId id = ZoneId.of("Europe/Paris");
+    System.out.println("ZoneId: " + id);
+		
+    ZoneId currentZone = ZoneId.systemDefault();
+    System.out.println("CurrentZone: " + currentZone);
+ }	
 	
 	
 	
