@@ -1,5 +1,6 @@
 package com.programacion.funcional;
 
+import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -9,6 +10,7 @@ import java.time.Period;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -234,8 +236,10 @@ public class TestPF {
 		      System.out.print("\n"+"####### CronoUnit Java 8#######");
 		     // testChromoUnits();
 		      System.out.print("\n"+"####### Period - Duration Java 8#######");
-		      testPeriod();
-		      testDuration();
+		      //testPeriod();
+		      //testDuration();
+		      System.out.print("\n"+"####### Temporal Adjusters Java 8#######");
+		      testAdjusters();
 	}
 	
 public static  int duplicar( int numero) {
@@ -354,6 +358,21 @@ public static void testPeriod() {
     System.out.println("Duration: " + duration);
  }
 	
+ public static void testAdjusters() {
+     //Get the current date
+     LocalDate date1 = LocalDate.now();
+     System.out.println("\n"+"Current date: " + date1);
+		
+     //get the next tuesday
+     LocalDate nextTuesday = date1.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));
+     System.out.println("Next Tuesday on : " + nextTuesday);
+		
+     //get the second saturday of next month
+     LocalDate firstInYear = LocalDate.of(date1.getYear(),date1.getMonth(), 1);
+     LocalDate secondSaturday = firstInYear.with(TemporalAdjusters.nextOrSame(
+        DayOfWeek.SATURDAY)).with(TemporalAdjusters.next(DayOfWeek.SATURDAY));
+     System.out.println("Second Saturday on : " + secondSaturday);
+  }
 	
 
 }
