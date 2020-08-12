@@ -180,7 +180,7 @@ public class TestPF {
 	        		.collect(Collectors.toList());
 	        
 	       // titles.forEach(System.out::println);
-	        titles.forEach((p) -> {
+	        titles.forEach(p -> {
 	        	System.out.print("\n");
 	        	System.out.print(p);
 	        });
@@ -197,15 +197,27 @@ public class TestPF {
 		    //System.out.print("\n"+arraycls);
 		    System.out.print("\n"+"#######Recorridos con Stream#######");
 		    for (Cliente cl: arraycls) {
-		    	System.out.print("\n");   
-		    	System.out.print(cl.nid + " - "+ cl.fullname);
+		    	//System.out.print("\n");   
+		    	//System.out.print(cl.nid + " - "+ cl.fullname);
 		    }
 		    
 		    arraycls.stream().forEach((p) -> {
-		    	System.out.print("\n");   
-		    	System.out.print(p.getFullname()+ " "+p.getNid()+" "+p.getTelefono());
+		    	//System.out.print("\n");   
+		    	//System.out.print(p.getFullname()+ " "+p.getNid()+" "+p.getTelefono());
 		    	   
 		    	   });
+		    System.out.print("\n"+"####### Optional Java 8#######");
+		      Integer value1 = null;
+		      Integer value2 = new Integer(10);
+				
+		      //System.out.println("\n"+value1+" - "+value2);
+		      //Optional.ofNullable - allows passed parameter to be null.
+		      Optional<Integer> c = Optional.ofNullable(value1);
+		      //System.out.println("\n"+c);
+		      //Optional.of - throws NullPointerException if passed parameter is null
+		      Optional<Integer> d = Optional.of(value2);
+		      //System.out.println(d.get());
+		      //System.out.println(sum(c,d));
 	
 	}
 	
@@ -218,6 +230,22 @@ public static  int duplicar( int numero) {
         }
         return numero*2;
     }
+
+public static Integer sum(Optional<Integer> a, Optional<Integer> b) {
+    //Optional.isPresent - checks the value is present or not
+		
+    System.out.println("\n"+"First parameter is present: " + a.isPresent());
+    System.out.println("Second parameter is present: " + b.isPresent());
+		
+    //Optional.orElse - returns the value if present otherwise returns
+    //the default value passed.
+    Integer value1 = a.orElse(new Integer(0));
+		
+    //Optional.get - gets the value, value should be present
+    //System.out.print(value1);
+    Integer value2 = b.get();
+    return value1 + value2;
+ }
 	
 	
 	
