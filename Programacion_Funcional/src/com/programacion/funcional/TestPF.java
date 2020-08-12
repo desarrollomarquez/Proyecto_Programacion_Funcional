@@ -6,6 +6,7 @@ import java.time.LocalTime;
 import java.time.Month;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -227,7 +228,9 @@ public class TestPF {
 		      System.out.print("\n"+"####### LocalDateTime Java 8#######");
 		     // testLocalDateTime();
 		      System.out.print("\n"+"####### ZonedDateTime Java 8#######");
-		      testZonedDateTime();
+		     // testZonedDateTime();
+		      System.out.print("\n"+"####### CronoUnit Java 8#######");
+		      testChromoUnits();
 	
 	}
 	
@@ -301,7 +304,27 @@ public static void testZonedDateTime() {
     System.out.println("CurrentZone: " + currentZone);
  }	
 	
-	
+public static void testChromoUnits() {
+    //Get the current date
+    LocalDate today = LocalDate.now();
+    System.out.println("\n"+"Current date: " + today);
+		
+    //add 1 week to the current date
+    LocalDate nextWeek = today.plus(1, ChronoUnit.WEEKS);
+    System.out.println("Next week: " + nextWeek);
+		
+    //add 1 month to the current date
+    LocalDate nextMonth = today.plus(1, ChronoUnit.MONTHS);
+    System.out.println("Next month: " + nextMonth);
+		
+    //add 1 year to the current date
+    LocalDate nextYear = today.plus(1, ChronoUnit.YEARS);
+    System.out.println("Next year: " + nextYear);
+		
+    //add 10 years to the current date
+    LocalDate nextDecade = today.plus(1, ChronoUnit.DECADES);
+    System.out.println("Date after ten year: " + nextDecade);
+ }
 	
 	
 	
